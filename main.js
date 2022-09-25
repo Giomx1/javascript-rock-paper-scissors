@@ -5,6 +5,7 @@ const allButtons = document.querySelectorAll("button");
 let userChoice
 let computerChoice
 let result
+const reset = document.getElementById("resetButton")
 
 function createComputerChoice() {//function to store random number, 3 and assigning an object to each number.
   let randomNumber = Math.floor(Math.random() * 3)
@@ -47,9 +48,17 @@ function theResults() {//programming outcomes of wins, losses, and ties.
   resultOutput.innerHTML = result;  
 }
 
+
 allButtons.forEach(button => button.addEventListener("click", (e) => {//I want to go through every button and add an event listener.
   userChoice = e.target.id;//Whenever I click  I want to bring back the ids of the buttons, which are the objects.
   userChoiceOutput.innerHTML = userChoice
   createComputerChoice()
   theResults()
 }));
+
+function resetGame() {
+  computerChoiceOutput.innerHTML = "";
+  userChoiceOutput.innerHTML = "";
+  resultOutput.innerHTML = "";
+}
+reset.addEventListener("click", resetGame)
